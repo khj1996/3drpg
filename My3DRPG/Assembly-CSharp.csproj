@@ -65,18 +65,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\BillBoard.cs" />
-    <Compile Include="Assets\Script\DragSlot.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\EnemyBase.cs" />
     <Compile Include="Assets\Script\FollowCamera.cs" />
-    <Compile Include="Assets\Script\GetItem.cs" />
-    <Compile Include="Assets\Script\InputNumber.cs" />
-    <Compile Include="Assets\Script\Inventory.cs" />
-    <Compile Include="Assets\Script\Item.cs" />
-    <Compile Include="Assets\Script\ItemManager.cs" />
+    <Compile Include="Assets\Script\Inven\DragSlot.cs" />
+    <Compile Include="Assets\Script\Inven\InputNumber.cs" />
+    <Compile Include="Assets\Script\Inven\Inventory.cs" />
+    <Compile Include="Assets\Script\Inven\Slot.cs" />
+    <Compile Include="Assets\Script\Item\GetItem.cs" />
+    <Compile Include="Assets\Script\Item\Item.cs" />
+    <Compile Include="Assets\Script\Item\ItemManager.cs" />
     <Compile Include="Assets\Script\ItemPickUp.cs" />
     <Compile Include="Assets\Script\Player.cs" />
-    <Compile Include="Assets\Script\Slot.cs" />
     <Compile Include="Assets\Script\StatusManager.cs" />
     <Compile Include="Assets\Script\weapon.cs" />
     <None Include="Assets\JJ_Oriental Fantasy Character - Berserker Grade 0_v1.1\Readme.txt" />
