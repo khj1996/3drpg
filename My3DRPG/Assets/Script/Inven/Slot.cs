@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     private         Rect            baseRect;
     private         GameObject      player;
@@ -76,6 +76,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
         text_Count.text = "0";
         go_CountImage.SetActive(false);
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (item != null)
+            _itemManager.ShowToolTip(item, transform.position);
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _itemManager.HideToolTip();
     }
     public void OnPointerClick(PointerEventData eventData)
     {

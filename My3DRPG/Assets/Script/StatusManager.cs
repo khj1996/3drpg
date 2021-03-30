@@ -52,7 +52,7 @@ public class StatusManager : MonoBehaviour
     }
     public void ChangeHP(float amount)
     {
-        HP -= amount;
+        HP += amount;
         Debug.Log("HP" + HP);
     }
 }

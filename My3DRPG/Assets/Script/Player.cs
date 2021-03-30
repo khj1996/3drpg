@@ -9,9 +9,11 @@ public class Player : MonoBehaviour
 {
     //컴포넌트
     private     Rigidbody       _rigidbody;         //리지드바디
+    private     BoxCollider     _boxCollider;       //박스콜라이더
     public      Animator        _animator;          //애니메이터
     public      GameObject      cameraBase;         //카메라
     public      GameObject      attackPoint;        //공격점
+    public      LayerMask       attackLayer;        //공격레이어
     public      Image           hpbar;              //체력바
 
     //조이스틱관련
@@ -24,12 +26,13 @@ public class Player : MonoBehaviour
 
     //플레이어 상태관련
     private     bool            IsAttack = false;   //공격상태
-    private     bool            IsJump   = false;   //점프상태
+    private     bool            isGround = false;   //점프상태
     private     bool            end      = false;   //나중에 게임매니저로 이동
         
     void Start()
     {
-        _rigidbody = gameObject.GetComponent<Rigidbody>();        
+        _rigidbody = gameObject.GetComponent<Rigidbody>();
+        _boxCollider = gameObject.GetComponent<BoxCollider>();
 
         StickFirstPos = Stick.transform.position;//스틱의 위치
         Radius = StickBase.rect.height / 2;
@@ -58,21 +61,22 @@ public class Player : MonoBehaviour
                     _animator.SetBool("IsMove", false);
                 }
             }
-
-            if (Input.GetKeyDown(KeyCode.Space) && IsJump == false)//점프
-            {
-                IsJump = true;
-                Jump();
-            }
-
+            Jump();
             CheckHP();
         }
     }
 
     void Jump()//점프
     {
-        float JumpPow = Input.GetAxis("Jump");
-        _rigidbody.AddForce(Vector3.up * JumpPow * 5.0f, ForceMode.Impulse);
+        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)//점프
+        {
+            isGround = false;
+            _rigidbody.velocity = transform.up * 4.5f;
+        }
+        else
+        {
+            isGround = Physics.Raycast(transform.position, Vector3.down, 0.2f);
+        }
     }
 
     //플레이어 이동(키보드)
@@ -166,7 +170,7 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(0.4f);
 
-        Collider[] colliders =  Physics.OverlapSphere(attackPoint.transform.position, 2.3f);
+        Collider[] colliders = Physics.OverlapSphere(attackPoint.transform.position, 2.3f, attackLayer);
         
         foreach (Collider col in colliders)
         {
@@ -182,26 +186,7 @@ public class Player : MonoBehaviour
         IsAttack = false;
         _animator.SetBool("IsAttack", false);
     }
-    IEnumerator Skill_1(float AttackPower)//스킬1 휘두르기
-    {
-        IsAttack = true;
-        _animator.SetBool("IsSkill_1", true);
-
-        yield return new WaitForSeconds(0.7f);
-
-        yield return new WaitForSeconds(0.5f);
-
-        IsAttack = false;
-        _animator.SetBool("IsSkill_1", false);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.transform.tag == "Ground")
-        {
-            IsJump = false;
-        }
-    }
+    
     private void CheckHP()
     {
         if (StatusManager.Instance.HP <= 0)

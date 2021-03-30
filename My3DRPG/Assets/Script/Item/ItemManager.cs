@@ -12,9 +12,11 @@ public class ItemEffect
 public class ItemManager : MonoBehaviour
 {
     [SerializeField]
-    private ItemEffect[] itemEffects;
+    private     ItemEffect[]    itemEffects;
+    [SerializeField]
+    private     SlotToolTip     theSlotToolTip;
 
-    private const string MAXHP = "MAXHP", HP = "HP";
+    private     const string    MAXHP = "MAXHP", HP = "HP";
     
     public void UseItem(Item _item)
     {
@@ -35,7 +37,7 @@ public class ItemManager : MonoBehaviour
                                 StatusManager.Instance.ChangeHP(itemEffects[i].num[j]);
                                 break;                            
                             default:
-                                Debug.Log("잘못된 Status 부위. MAXHP, HP만 가능합니다.");
+                                Debug.Log("잘못된 Status MAXHP, HP만 가능합니다.");
                                 break;
                         }
                         Debug.Log(_item.itemName + " 을 사용했습니다.");
@@ -43,7 +45,15 @@ public class ItemManager : MonoBehaviour
                     return;
                 }
             }
-            Debug.Log("itemEffectDatabase에 일치하는 itemName이 없습니다.");
+            Debug.Log("ItemManager에 일치하는 itemName이 없습니다.");
         }
+    }
+    public void ShowToolTip(Item _item, Vector3 _pos)
+    {
+        theSlotToolTip.ShowToolTip(_item, _pos);
+    }
+    public void HideToolTip()
+    {
+        theSlotToolTip.HideToolTip();
     }
 }
