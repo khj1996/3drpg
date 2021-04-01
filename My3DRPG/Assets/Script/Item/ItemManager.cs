@@ -48,9 +48,10 @@ public class ItemManager : MonoBehaviour
             Debug.Log("ItemManager에 일치하는 itemName이 없습니다.");
         }
     }
-    public void ShowToolTip(Item _item, Vector3 _pos)
+    public void ShowToolTip(Slot _slot, Vector3 _pos)
     {
-        theSlotToolTip.ShowToolTip(_item, _pos);
+        theSlotToolTip.ShowToolTip(_slot, _pos);
+        theSlotToolTip.ButtonLink(_slot);
     }
     public void HideToolTip()
     {

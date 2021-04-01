@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     private         Rect            baseRect;
-    private         GameObject      player;
     private         InputNumber     theInputNumber;
 
     public          Item            item;           // 획득한 아이템
@@ -22,7 +21,6 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     void Start()
     {
         baseRect = transform.parent.parent.GetComponent<RectTransform>().rect;
-        player = GameObject.FindGameObjectWithTag("Player");
         theInputNumber = FindObjectOfType<InputNumber>();
         _itemManager = FindObjectOfType<ItemManager>();
     }
@@ -63,7 +61,10 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         text_Count.text = itemCount.ToString();
 
         if (itemCount <= 0)
+        {
             ClearSlot();
+            _itemManager.HideToolTip();
+        }
     }
 
     // 해당 슬롯 하나 삭제
@@ -79,21 +80,22 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (item != null)
-            _itemManager.ShowToolTip(item, transform.position);
+        //if (item != null)
+        //    _itemManager.ShowToolTip(item, transform.position);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        _itemManager.HideToolTip();
+        //_itemManager.HideToolTip();
     }
     public void OnPointerClick(PointerEventData eventData)
     {
         if (item != null)
         {
-            _itemManager.UseItem(item);
-
-            if (item.itemType == Item.ItemType.Used)
-                SetSlotCount(-1);
+            _itemManager.ShowToolTip(GetComponent<Slot>(), transform.position);
+        }
+        else
+        {
+            _itemManager.HideToolTip();
         }
     }
     public void OnBeginDrag(PointerEventData eventData)
@@ -134,6 +136,16 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         if (DragSlot.instance.dragSlot != null)
             ChangeSlot();
+    }
+    public void UseItemButton()
+    {
+        if (item != null)
+        {
+            _itemManager.UseItem(item);
+
+            if (item.itemType == Item.ItemType.Used)
+                SetSlotCount(-1);
+        }
     }
 
     private void ChangeSlot()

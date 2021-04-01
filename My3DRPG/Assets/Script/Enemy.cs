@@ -138,7 +138,8 @@ public class Enemy : EnemyBase
         StopCoroutine("Attack");
         pathFinder.isStopped = true;
         _animator.SetBool("IsDie", true);
-        Instantiate(dropItem, transform.position, Quaternion.identity);
+        Instantiate(dropItem, transform.position + new Vector3(0, 0.3f, 0)
+                    , Quaternion.identity);
         StartCoroutine(AfterDead());
     }
 

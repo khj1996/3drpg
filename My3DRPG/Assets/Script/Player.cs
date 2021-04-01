@@ -75,7 +75,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            isGround = Physics.Raycast(transform.position, Vector3.down, 0.2f);
+            isGround = Physics.Raycast(transform.position+new Vector3(0,0.1f,0)
+                                        , Vector3.down, 0.2f);
         }
     }
 
@@ -132,7 +133,6 @@ public class Player : MonoBehaviour
             Rot_dir(v3RotatedDirection);//이동방향으로 회전
         }
     }
-
     // 드래그 끝.
     public void DragEnd()
     {

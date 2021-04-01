@@ -76,7 +76,8 @@ public class InputNumber : MonoBehaviour
         for (int i = 0; i < _num; i++)
         {
             Instantiate(DragSlot.instance.dragSlot.item.itemPrefab,
-                player.transform.position, DragSlot.instance.dragSlot.item.itemPrefab.transform.rotation);
+                        player.transform.position + new Vector3(0, 0.5f, 0),
+                        DragSlot.instance.dragSlot.item.itemPrefab.transform.rotation);
             DragSlot.instance.dragSlot.SetSlotCount(-1);
             yield return new WaitForSeconds(0.05f);
         }

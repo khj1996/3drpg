@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public static bool invectoryActivated = false;  // 인벤토리 활성화 여부. true가 되면 카메라 움직임과 다른 입력을 막을 것이다.
+    public  static  bool        invectoryActivated = false;  // 인벤토리 활성화 여부. true가 되면 카메라 움직임과 다른 입력을 막을 것이다.
 
     [SerializeField]
-    private GameObject go_InventoryBase; // Inventory_Base 이미지
+    private         GameObject  go_InventoryBase;           // Inventory_Base 이미지
     [SerializeField]
-    private GameObject go_SlotsParent;  // Slot들의 부모인 Grid Setting 
+    private         GameObject  go_SlotsParent;             // Slot들의 부모인 Grid Setting 
+    [SerializeField]
+    private         GameObject  toolTip;             // 툴팁
 
-    private Slot[] slots;  // 슬롯들 배열
+    private         Slot[]      slots;                      // 슬롯들 배열
 
     void Start()
     {
@@ -43,6 +45,7 @@ public class Inventory : MonoBehaviour
 
     private void CloseInventory()
     {
+        toolTip.SetActive(false);
         go_InventoryBase.SetActive(false);
     }
 
