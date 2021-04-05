@@ -34,7 +34,7 @@ public class FollowCamera : MonoBehaviour
         {
             curMPos.x = Input.mousePosition.x;
 
-            amount = startMPos.x - curMPos.x;
+            amount = curMPos.x - startMPos.x;
 
             transform.rotation = Quaternion.Euler(0, rot.eulerAngles.y + amount * 0.1f, 0);//좌우 드래그로 방향회전
         }

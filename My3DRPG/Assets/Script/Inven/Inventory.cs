@@ -51,13 +51,13 @@ public class Inventory : MonoBehaviour
 
     public void AcquireItem(Item _item, int _count = 1)
     {
-        if (Item.ItemType.Equipment != _item.itemType)
+        if (Item.ItemType.Equipment != _item.itemType)//장비가 아닐경우
         {
-            for (int i = 0; i < slots.Length; i++)
+            for (int i = 0; i < slots.Length; i++)//슬롯의 길이만큼
             {
                 if (slots[i].item != null)  // null 이라면 slots[i].item.itemName 할 때 런타임 에러
                 {
-                    if (slots[i].item.itemName == _item.itemName)
+                    if (slots[i].item.itemName == _item.itemName)//아이템이 존재할경우
                     {
                         slots[i].SetSlotCount(_count);
                         return;

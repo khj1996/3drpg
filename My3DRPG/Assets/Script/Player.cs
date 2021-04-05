@@ -9,10 +9,9 @@ public class Player : MonoBehaviour
 {
     //컴포넌트
     private     Rigidbody       _rigidbody;         //리지드바디
-    private     BoxCollider     _boxCollider;       //박스콜라이더
     public      Animator        _animator;          //애니메이터
     public      GameObject      cameraBase;         //카메라
-    public      GameObject      attackPoint;        //공격점
+    public      Transform       attackPoint;        //공격점
     public      LayerMask       attackLayer;        //공격레이어
     public      Image           hpbar;              //체력바
 
@@ -32,7 +31,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
-        _boxCollider = gameObject.GetComponent<BoxCollider>();
 
         StickFirstPos = Stick.transform.position;//스틱의 위치
         Radius = StickBase.rect.height / 2;
@@ -170,14 +168,14 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(0.4f);
 
-        Collider[] colliders = Physics.OverlapSphere(attackPoint.transform.position, 2.3f, attackLayer);
-        
-        foreach (Collider col in colliders)
+        Collider[] colliders = Physics.OverlapSphere(attackPoint.position, 2.3f, attackLayer);
+
+
+        for (int i = 0; i < colliders.Length; i++)
         {
-            if (col.tag == "monster")
+            if (colliders[i].tag == "monster")
             {
-                Debug.Log("공격");
-                col.GetComponent<EnemyBase>().GetDam(AttackPower);
+                colliders[i].GetComponent<EnemyBase>().GetDam(AttackPower);
             }
         }
 

@@ -82,7 +82,6 @@ public class Enemy : EnemyBase
         {
             _animator.SetBool("IsMove", true);
         }
-        Debug.Log("탐색중");
     }
     public override void OnUpdateTraceState()
     {
@@ -95,7 +94,6 @@ public class Enemy : EnemyBase
             findTarget = false;
             ChangeState(eState.Idle);
         }
-        Debug.Log("추적중");
     }
     public override void OnUpdateAttackState()
     {
@@ -113,7 +111,6 @@ public class Enemy : EnemyBase
         {
             curCT = curCT - Time.deltaTime;
         }
-        Debug.Log("공격중");
     }
     public override void OnUpdateDeadState()
     {
@@ -137,9 +134,7 @@ public class Enemy : EnemyBase
     {
         StopCoroutine("Attack");
         pathFinder.isStopped = true;
-        _animator.SetBool("IsDie", true);
-        Instantiate(dropItem, transform.position + new Vector3(0, 0.3f, 0)
-                    , Quaternion.identity);
+        _animator.SetBool("IsDie", true);        
         StartCoroutine(AfterDead());
     }
 
@@ -162,7 +157,6 @@ public class Enemy : EnemyBase
         {
             ChangeState(eState.Dead);
         }
-        Debug.Log("공격받음" + amount);
     }
     IEnumerator UpdatePath()//패스파인더 경로 수정
     {
@@ -183,7 +177,6 @@ public class Enemy : EnemyBase
                         findTarget = true;
                         _animator.SetBool("IsMove", true);
                         ChangeState(eState.Trace);
-                        Debug.Log("찾음");
                         break;
                     }
                 }
@@ -234,6 +227,8 @@ public class Enemy : EnemyBase
     IEnumerator AfterDead()//죽고나서 일정시간이 지나면 파괴
     {
         yield return new WaitForSeconds(1.0f);
-        Destroy(gameObject);
+        Instantiate(dropItem, transform.position + new Vector3(0, 0.3f, 0)
+                    , Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

@@ -39,9 +39,7 @@ public class EnemyBase : MonoBehaviour
                 break;
             case eState.Attack:
                 OnExitAttackState();
-                break;
-            case eState.Dead:
-                break;
+                break;            
         }
 
         curState = targetState;
