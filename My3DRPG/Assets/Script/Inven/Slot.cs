@@ -6,7 +6,11 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    private         Rect            baseRect;
+    [SerializeField]
+    private         RectTransform   baseRect;
+    [SerializeField] 
+    private         RectTransform   quickSlotBaseRect;
+
     private         InputNumber     theInputNumber;
 
     public          Item            item;           // 획득한 아이템
@@ -22,7 +26,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     void Start()
     {
-        baseRect = transform.parent.parent.GetComponent<RectTransform>().rect;
         theInputNumber = FindObjectOfType<InputNumber>();
         _itemManager = FindObjectOfType<ItemManager>();
     }
@@ -117,24 +120,42 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     // 마우스 드래그가 끝났을 때 발생하는 이벤트
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (DragSlot.instance.transform.localPosition.x < baseRect.xMin
-            || DragSlot.instance.transform.localPosition.x > baseRect.xMax
-            || DragSlot.instance.transform.localPosition.y < baseRect.yMin
-            || DragSlot.instance.transform.localPosition.y > baseRect.yMax)
+        if (!((DragSlot.instance.transform.localPosition.x > baseRect.rect.xMin
+            && DragSlot.instance.transform.localPosition.x < baseRect.rect.xMax
+            && DragSlot.instance.transform.localPosition.y > baseRect.rect.yMin
+            && DragSlot.instance.transform.localPosition.y < baseRect.rect.yMax)
+            ||
+            (DragSlot.instance.transform.localPosition.x + baseRect.transform.localPosition.x > quickSlotBaseRect.rect.xMin + quickSlotBaseRect.transform.localPosition.x
+            && DragSlot.instance.transform.localPosition.x + baseRect.transform.localPosition.x < quickSlotBaseRect.rect.xMax + quickSlotBaseRect.transform.localPosition.x
+            && DragSlot.instance.transform.localPosition.y + baseRect.transform.localPosition.y > quickSlotBaseRect.rect.yMin + quickSlotBaseRect.transform.localPosition.y
+            && DragSlot.instance.transform.localPosition.y + baseRect.transform.localPosition.y < quickSlotBaseRect.rect.yMax + quickSlotBaseRect.transform.localPosition.y)))
         {
             if (DragSlot.instance.dragSlot != null)
                 theInputNumber.Call();
         }
         else
         {
+            _itemManager.HideToolTip();
             DragSlot.instance.SetColor(0);
             DragSlot.instance.dragSlot = null;
+            Debug.Log(baseRect.rect);
         }
     }
     public void OnDrop(PointerEventData eventData)
     {
         if (DragSlot.instance.dragSlot != null)
-            ChangeSlot();
+        {
+            if (isQuick && DragSlot.instance.dragSlot.item.itemType == Item.ItemType.Used)
+            {
+                ChangeSlot();
+            }
+            else if (!isQuick)
+            {
+                ChangeSlot();
+            }
+            else
+                return;
+        }
     }
     public void UseItemButton()
     {
