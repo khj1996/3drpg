@@ -71,6 +71,7 @@
     <Compile Include="Assets\Script\Inven\DragSlot.cs" />
     <Compile Include="Assets\Script\Inven\InputNumber.cs" />
     <Compile Include="Assets\Script\Inven\Inventory.cs" />
+    <Compile Include="Assets\Script\Inven\QuickSlot.cs" />
     <Compile Include="Assets\Script\Inven\Slot.cs" />
     <Compile Include="Assets\Script\Item\GetItem.cs" />
     <Compile Include="Assets\Script\Item\Item.cs" />

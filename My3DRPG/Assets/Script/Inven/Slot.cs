@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     private         Rect            baseRect;
     private         InputNumber     theInputNumber;
@@ -16,7 +16,9 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField]
     private         GameObject      go_CountImage;
     [SerializeField]
-    private         Text            text_Count;    
+    private         Text            text_Count;
+    [SerializeField]
+    private         bool            isQuick;
 
     void Start()
     {
@@ -76,24 +78,23 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         text_Count.text = "0";
         go_CountImage.SetActive(false);
     }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        //if (item != null)
-        //    _itemManager.ShowToolTip(item, transform.position);
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        //_itemManager.HideToolTip();
-    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (item != null)
+        if (!isQuick)//퀵슬롯이 아닐경우
         {
-            _itemManager.ShowToolTip(GetComponent<Slot>(), transform.position);
+            if (item != null)
+            {
+                _itemManager.ShowToolTip(GetComponent<Slot>(), transform.position);
+            }
+            else
+            {
+                _itemManager.HideToolTip();
+            }
         }
-        else
+        else if (isQuick)//퀵슬롯일경우
         {
-            _itemManager.HideToolTip();
+            UseItemButton();
         }
     }
     public void OnBeginDrag(PointerEventData eventData)
