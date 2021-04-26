@@ -102,7 +102,7 @@ MonoBehaviour:
   m_MinSize: {x: 433, y: 271}
   m_MaxSize: {x: 14003, y: 10021}
   vertical: 0
-  controlID: 64
+  controlID: 117
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -122,8 +122,8 @@ MonoBehaviour:
     y: 0
     width: 441
     height: 459
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 62
+  controlID: 140
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_MinSize: {x: 433, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 1
-  controlID: 63
+  controlID: 141
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 144
+  controlID: 142
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,8 +318,8 @@ MonoBehaviour:
     y: 0
     width: 873
     height: 459
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -577,7 +577,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 283a0000
     m_LastClickedID: 14888
-    m_ExpandedIDs: 000000008c3a00008e3a0000903a0000923a0000943a0000963a0000983a00009a3a0000
+    m_ExpandedIDs: 00000000903a0000923a0000943a0000963a0000983a00009a3a00009c3a00009e3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -605,7 +605,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c3a00008e3a0000903a0000923a0000943a0000963a0000983a00009a3a0000
+    m_ExpandedIDs: 00000000903a0000923a0000943a0000963a0000983a00009a3a00009c3a00009e3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -726,20 +726,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/RPG_inventory_icons
+    - Assets/Script/Inven
   m_ViewMode: 1
   m_StartGridSize: 46
   m_LastFolders:
-  - Assets/RPG_inventory_icons
+  - Assets/Script/Inven
   m_LastFoldersGridSize: 46
   m_LastProjectPath: "C:\\Users\\kwonhyeokjin\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\tree2\\My3DRPG"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c83a0000
-    m_LastClickedID: 15048
-    m_ExpandedIDs: 000000008c3a00008e3a0000903a0000923a0000943a0000963a0000983a00009a3a0000cc3a000000ca9a3b
+    m_SelectedIDs: da450000
+    m_LastClickedID: 17882
+    m_ExpandedIDs: 00000000903a0000923a0000943a0000963a0000983a00009a3a00009c3a00009e3a0000b83a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -767,7 +767,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c3a00008e3a0000903a0000923a0000943a0000963a0000983a00009a3a0000
+    m_ExpandedIDs: 00000000903a0000923a0000943a0000963a0000983a00009a3a00009c3a00009e3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -819,7 +819,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 11}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 46
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 114
@@ -890,23 +890,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 42390000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 7af5ffff7cf5ffff8af5ffffa0f8ffff6afbffffc0330000543400008c34000090350000
+      m_ExpandedIDs: 6afbffffa4330000c0330000543400006c3400008c340000ea34000072350000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: DragSlot
-        m_OriginalName: DragSlot
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 13206
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -952,9 +952,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: -23.92679, z: 0}
+    m_Target: {x: 1028.25, y: 540, z: 0}
     speed: 2
-    m_Value: {x: 0, y: -23.92679, z: 0}
+    m_Value: {x: 1028.25, y: 540, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1004,9 +1004,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.15566723, y: -0.00978694, z: 0.001528541, w: -0.9877599}
   m_Size:
-    m_Target: 6.727025
+    m_Target: 247.86905
     speed: 2
-    m_Value: 6.727025
+    m_Value: 247.86905
   m_Ortho:
     m_Target: 0
     speed: 2

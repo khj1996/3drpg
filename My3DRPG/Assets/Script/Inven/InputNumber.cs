@@ -63,7 +63,10 @@ public class InputNumber : MonoBehaviour
                     num = DragSlot.instance.dragSlot.itemCount;
             }
             else
-                num = 1;
+            {
+                Cancel();
+                return;
+            }
         }
         else
             num = int.Parse(text_Preview.text);
