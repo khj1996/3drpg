@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public  static  bool        invectoryActivated = false;  // 인벤토리 활성화 여부. true가 되면 카메라 움직임과 다른 입력을 막을 것이다.
+    public  static  bool        invectoryActivated = false; 
 
     [SerializeField]
-    private         GameObject  inventoryBase;           // 인벤토리
+    private         GameObject  inventoryBase; 
     [SerializeField]
-    private         GameObject  slotsParent;             // 슬롯의 부모 
+    private         GameObject  slotsParent;
     [SerializeField]
-    private         GameObject  quickParent;             // 퀵슬롯들의 부모 
+    private         GameObject  quickParent; 
     [SerializeField]
-    private         GameObject  toolTip;                 // 툴팁
+    private         GameObject  toolTip; 
 
-    private         Slot[]      slots;                   // 슬롯들 배열
-    private         Slot[]      qslots;                  // 퀵슬롯들 배열
+    private         Slot[]      slots;
+    private         Slot[]      qslots; 
 
     void Start()
     {
@@ -55,36 +55,36 @@ public class Inventory : MonoBehaviour
 
     public void AcquireItem(Item _item, int _count = 1)
     {
-        if (_item.itemType != Item.ItemType.Equipment)//장비가 아닐경우
+        if (_item.itemType != Item.ItemType.Equipment)
         {
             if (_item.itemType == Item.ItemType.Used)
             {
-                for (int i = 0; i < qslots.Length; i++)//퀵슬롯의 길이만큼
+                for (int i = 0; i < qslots.Length; i++)
                 {
-                    if (qslots[i].item != null)  // null 이라면 slots[i].item.itemName 할 때 런타임 에러
+                    if (qslots[i].item != null)
                     {
-                        if (qslots[i].item.itemName == _item.itemName)//아이템이 존재할경우
+                        if (qslots[i].item.itemName == _item.itemName)
                         {
-                            qslots[i].SetSlotCount(_count);//수량추가
+                            qslots[i].SetSlotCount(_count);
                             return;
                         }
                     }
                 }
             }
-            for (int i = 0; i < slots.Length; i++)//슬롯의 길이만큼
+            for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i].item != null)  // null 이라면 slots[i].item.itemName 할 때 런타임 에러
+                if (slots[i].item != null) 
                 {
-                    if (slots[i].item.itemName == _item.itemName)//아이템이 존재할경우
+                    if (slots[i].item.itemName == _item.itemName)
                     {
-                        slots[i].SetSlotCount(_count);//수량추가
+                        slots[i].SetSlotCount(_count);
                         return;
                     }
                 }
             }
         }
 
-        if (_item.itemType == Item.ItemType.Used)//아이템일경우 퀵슬롯에 추가
+        if (_item.itemType == Item.ItemType.Used)
         {
             for (int i = 0; i < qslots.Length; i++)
             {

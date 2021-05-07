@@ -85,7 +85,7 @@ public class Enemy : EnemyBase
     }
     public override void OnUpdateTraceState()
     {
-        if (Vector3.Distance(targetPos, transform.position) < 1.5f && findTarget == true)
+        if (Vector3.Distance(targetPos, transform.position) < 2.0f && findTarget == true)
         {
             ChangeState(eState.Attack);
         }
@@ -99,9 +99,12 @@ public class Enemy : EnemyBase
     {
         if (Vector3.Distance(targetPos, transform.position) > 2.0 && findTarget == true)
         {
+            pathFinder.isStopped = false;
             ChangeState(eState.Trace);
         }
-        
+        else
+            pathFinder.isStopped = true;
+
         if (curCT < 0)
         {
             curCT = attackCT;
@@ -205,7 +208,6 @@ public class Enemy : EnemyBase
     }
     IEnumerator Attack()//공격 코루틴
     {
-        pathFinder.isStopped =true;
         _animator.SetBool("IsAttack", true);
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 3.0f, targetLayers);
@@ -221,7 +223,6 @@ public class Enemy : EnemyBase
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length+0.3f);
 
         _animator.SetBool("IsAttack", false);
-        pathFinder.isStopped = false;
     }
 
     IEnumerator AfterDead()//죽고나서 일정시간이 지나면 파괴
