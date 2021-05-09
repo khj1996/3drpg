@@ -44,17 +44,18 @@ public class StatusManager : MonoBehaviour
     [SerializeField]
     private Text action_T;
     [SerializeField]
-    private GameObject StatusBase;
+    private     GameObject  StatusBase;
+    public      Image       expBar;              //체력바
     //플레이어능력치    
     public float maxHP { get; set; }        //최대체력
     public float AttackPower { get; set; }  //공격력
     public float movSpeed { get; set; }     //이동속도
+    public float EXPMAX { get; set; }       //현재체력
 
     public float HP;                        //현재체력
 
     public float EXP = 0;                   //현재체력
 
-    public float EXPMAX;                    //현재체력
 
     private int Point =5;
 
@@ -63,7 +64,7 @@ public class StatusManager : MonoBehaviour
         maxHP = 20.0f;
         AttackPower = 5.0f;
         movSpeed = 8.0f;
-        EXPMAX = 100;
+        EXPMAX = 50;
 
         HP = maxHP;
     }
@@ -73,6 +74,7 @@ public class StatusManager : MonoBehaviour
         HP_T.text =     "HP              :" + maxHP;
         Speed_T.text =  "Speed         :" + movSpeed;
         Point_T.text = "Point : " + Point;
+        expBar.fillAmount = EXP / EXPMAX;
     }
     public void ChangeMAXHP(float amount)
     {
@@ -136,5 +138,16 @@ public class StatusManager : MonoBehaviour
         {
 
         }
+    }
+    public void ChangeEXP(int amount)
+    {
+        EXP += amount;
+        if (EXP >= EXPMAX)
+        {
+            EXP -= EXPMAX;
+            Point += 3;
+            Point_T.text = "Point : " + Point;
+        }
+        expBar.fillAmount = EXP / EXPMAX;
     }
 }

@@ -227,6 +227,7 @@ public class Enemy : EnemyBase
 
     IEnumerator AfterDead()//죽고나서 일정시간이 지나면 파괴
     {
+        StatusManager.Instance.ChangeEXP(30);
         yield return new WaitForSeconds(1.0f);
         Instantiate(dropItem, transform.position + new Vector3(0, 0.3f, 0)
                     , Quaternion.identity);

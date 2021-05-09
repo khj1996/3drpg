@@ -171,11 +171,11 @@ public class Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(attackPoint.position, 2.3f, attackLayer);
 
 
-        for (int i = 0; i < colliders.Length; i++)
+        foreach (Collider col in colliders)
         {
-            if (colliders[i].tag == "monster")
+            if (col.tag == "monster")
             {
-                colliders[i].GetComponent<EnemyBase>().GetDam(AttackPower);
+                col.GetComponent<EnemyBase>().GetDam(AttackPower);
             }
         }
 
