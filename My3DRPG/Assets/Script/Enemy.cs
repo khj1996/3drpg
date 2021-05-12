@@ -85,11 +85,11 @@ public class Enemy : EnemyBase
     }
     public override void OnUpdateTraceState()
     {
-        if (Vector3.Distance(targetPos, transform.position) < 2.0f && findTarget == true)
+        if (pathFinder.remainingDistance < 2.0f && findTarget == true)
         {
             ChangeState(eState.Attack);
         }
-        else if (Vector3.Distance(targetPos, transform.position) > 15f && findTarget == true)
+        else if (pathFinder.remainingDistance > 15f && findTarget == true)
         {
             findTarget = false;
             ChangeState(eState.Idle);
@@ -97,7 +97,7 @@ public class Enemy : EnemyBase
     }
     public override void OnUpdateAttackState()
     {
-        if (Vector3.Distance(targetPos, transform.position) > 2.0 && findTarget == true)
+        if (pathFinder.remainingDistance > 2.0 && findTarget == true)
         {
             pathFinder.isStopped = false;
             ChangeState(eState.Trace);
