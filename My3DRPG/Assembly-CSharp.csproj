@@ -123,6 +123,7 @@
     <Compile Include="Assets\Script\Item\SlotToolTip.cs" />
     <Compile Include="Assets\Script\ItemPickUp.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\SaveAndLoad.cs" />
     <Compile Include="Assets\Script\StatusManager.cs" />
     <Compile Include="Assets\Script\weapon.cs" />
     <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
@@ -141,6 +142,7 @@
     <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
     <None Include="Assets\DreamForestTree\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
+    <None Include="Assets\Save\SaveFile.txt" />
     <None Include="Assets\DreamForestTree\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
     <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\ACES.cginc" />
     <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\MotionBlur.cginc" />

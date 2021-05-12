@@ -57,7 +57,7 @@ public class StatusManager : MonoBehaviour
     public float EXP = 0;                   //현재체력
 
 
-    private int Point =5;
+    public int Point =5;
 
     public StatusManager()
     {

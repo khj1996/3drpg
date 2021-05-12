@@ -13,15 +13,18 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private         GameObject  quickParent; 
     [SerializeField]
-    private         GameObject  toolTip; 
+    private         GameObject  toolTip;
+    [SerializeField] 
+    private         Item[]      items;
 
     private         Slot[]      slots;
-    private         Slot[]      qslots; 
-
+    private         Slot[]      qSlots;
+    public Slot[] GetSlots() { return slots; }
+    public Slot[] GetQuickSlots() { return qSlots; }
     void Start()
     {
         slots = slotsParent.GetComponentsInChildren<Slot>();
-        qslots = quickParent.GetComponentsInChildren<Slot>();
+        qSlots = quickParent.GetComponentsInChildren<Slot>();
     }
 
     void Update()
@@ -59,13 +62,13 @@ public class Inventory : MonoBehaviour
         {
             if (_item.itemType == Item.ItemType.Used)
             {
-                for (int i = 0; i < qslots.Length; i++)
+                for (int i = 0; i < qSlots.Length; i++)
                 {
-                    if (qslots[i].item != null)
+                    if (qSlots[i].item != null)
                     {
-                        if (qslots[i].item.itemName == _item.itemName)
+                        if (qSlots[i].item.itemName == _item.itemName)
                         {
-                            qslots[i].SetSlotCount(_count);
+                            qSlots[i].SetSlotCount(_count);
                             return;
                         }
                     }
@@ -86,11 +89,11 @@ public class Inventory : MonoBehaviour
 
         if (_item.itemType == Item.ItemType.Used)
         {
-            for (int i = 0; i < qslots.Length; i++)
+            for (int i = 0; i < qSlots.Length; i++)
             {
-                if (qslots[i].item == null)
+                if (qSlots[i].item == null)
                 {
-                    qslots[i].AddItem(_item, _count);
+                    qSlots[i].AddItem(_item, _count);
                     return;
                 }
             }
@@ -104,5 +107,19 @@ public class Inventory : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void LoadToInven(int _arrayNum, string _itemName, int _itemNum)
+    {
+        for (int i = 0; i < items.Length; i++)
+            if (items[i].itemName == _itemName)
+                slots[_arrayNum].AddItem(items[i], _itemNum);
+    }
+
+    public void LoadToQuickSlot(int _arrayNum, string _itemName, int _itemNum)
+    {
+        for (int i = 0; i < items.Length; i++)
+            if (items[i].itemName == _itemName)
+                qSlots[_arrayNum].AddItem(items[i], _itemNum);
     }
 }
