@@ -102,7 +102,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (item != null)
+        if (item != null && Inventory.invectoryActivated == true)
         {
             DragSlot.instance.dragSlot = this;
             DragSlot.instance.DragSetImage(itemImage);
@@ -113,7 +113,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     // 마우스 드래그 중일 때 계속 발생하는 이벤트
     public void OnDrag(PointerEventData eventData)
     {
-        if (item != null)
+        if (item != null && Inventory.invectoryActivated == true)
             DragSlot.instance.transform.position = eventData.position;
     }
 

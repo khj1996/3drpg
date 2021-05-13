@@ -642,7 +642,6 @@ MonoBehaviour:
   attackLayer:
     serializedVersion: 2
     m_Bits: 262144
-  hpbar: {fileID: 546646645}
   Stick: {fileID: 1651975168}
   StickBase: {fileID: 1508086755}
 --- !u!114 &102060735
@@ -10395,7 +10394,7 @@ PrefabInstance:
     - target: {fileID: 659134932913114512, guid: 11ad173cf1c841c478629636d5439167,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.59966326
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 659134932913114512, guid: 11ad173cf1c841c478629636d5439167,
         type: 3}
@@ -16384,6 +16383,8 @@ MonoBehaviour:
   action_T: {fileID: 337558429}
   StatusBase: {fileID: 641125718}
   expBar: {fileID: 481640140}
+  hpbar: {fileID: 546646645}
+  end: 0
   HP: 20
   EXP: 0
   Point: 5

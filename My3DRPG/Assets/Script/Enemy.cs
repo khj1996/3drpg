@@ -216,7 +216,7 @@ public class Enemy : EnemyBase
         {
             if (col.tag == "Player")
             {
-                col.GetComponent<Player>().GetDam(power);
+                StatusManager.Instance.GetDam(power);
                 break;
             }
         }

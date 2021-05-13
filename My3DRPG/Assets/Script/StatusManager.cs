@@ -45,7 +45,10 @@ public class StatusManager : MonoBehaviour
     private Text action_T;
     [SerializeField]
     private     GameObject  StatusBase;
-    public      Image       expBar;              //체력바
+    public      Image       expBar;             //체력바
+    public      Image       hpbar;              //체력바
+    public      bool        end = false;        //나중에 게임매니저로 이동
+
     //플레이어능력치    
     public float maxHP { get; set; }        //최대체력
     public float AttackPower { get; set; }  //공격력
@@ -75,16 +78,30 @@ public class StatusManager : MonoBehaviour
         Speed_T.text =  "Speed         :" + movSpeed;
         Point_T.text = "Point : " + Point;
         expBar.fillAmount = EXP / EXPMAX;
+        hpbar.fillAmount = HP / maxHP;
     }
+    private void Update()
+    {
+        CheckHP();
+    }
+
+    public void refresh()
+    {
+        Power_T.text = "Power         :" + AttackPower;
+        HP_T.text = "HP              :" + maxHP;
+        Speed_T.text = "Speed         :" + movSpeed;
+        Point_T.text = "Point : " + Point;
+        expBar.fillAmount = EXP / EXPMAX;
+        hpbar.fillAmount = HP / maxHP;
+    }
+
     public void ChangeMAXHP(float amount)
     {
         maxHP += amount;
-        Debug.Log("MAXHP" + maxHP);
     }
     public void ChangeHP(float amount)
     {
         HP += amount;
-        Debug.Log("HP" + HP);
     }
     public void TryOpenStatus()
     {
@@ -150,4 +167,24 @@ public class StatusManager : MonoBehaviour
         }
         expBar.fillAmount = EXP / EXPMAX;
     }
+    private void CheckHP()
+    {
+        if (HP <= 0)
+            GetDam(0);
+
+        if (HP > maxHP)
+            HP = Instance.maxHP;
+
+        hpbar.fillAmount = HP / maxHP;
+    }
+    public void GetDam(float amount)
+    {
+        ChangeHP(-amount);
+
+        if (HP <= 0)
+        {
+            end = true;
+        }
+    }
+
 }

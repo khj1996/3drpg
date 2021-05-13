@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     public      GameObject      cameraBase;         //카메라
     public      Transform       attackPoint;        //공격점
     public      LayerMask       attackLayer;        //공격레이어
-    public      Image           hpbar;              //체력바
 
     //조이스틱관련
     public      Transform       Stick;              //조이스틱   
@@ -26,7 +25,6 @@ public class Player : MonoBehaviour
     //플레이어 상태관련
     private     bool            IsAttack = false;   //공격상태
     private     bool            isGround = false;   //점프상태
-    private     bool            end      = false;   //나중에 게임매니저로 이동
         
     void Start()
     {
@@ -41,7 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!end)//사망상태가 아닐시
+        if (!StatusManager.Instance.end)//사망상태가 아닐시
         {
             if (IsAttack == false)//공격상태가 아닐시
             {
@@ -60,7 +58,10 @@ public class Player : MonoBehaviour
                 }
             }
             Jump();
-            CheckHP();
+        }
+        else
+        {
+            _animator.SetBool("IsDie", true);
         }
     }
 
@@ -151,7 +152,7 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        if (!end)
+        if (!StatusManager.Instance.end)
         {
             if (IsAttack == false)
             {
@@ -183,27 +184,6 @@ public class Player : MonoBehaviour
 
         IsAttack = false;
         _animator.SetBool("IsAttack", false);
-    }
-    
-    private void CheckHP()
-    {
-        if (StatusManager.Instance.HP <= 0)
-            GetDam(0);
-
-        if (StatusManager.Instance.HP > StatusManager.Instance.maxHP)
-            StatusManager.Instance.HP = StatusManager.Instance.maxHP;
-
-        hpbar.fillAmount = StatusManager.Instance.HP / StatusManager.Instance.maxHP;
-    }
-    public void GetDam(float amount)
-    {   
-        StatusManager.Instance.ChangeHP(-amount);        
-
-        if (StatusManager.Instance.HP <= 0)
-        {
-            end = true;
-            _animator.SetBool("IsDie", true);
-        }        
-    }
+    } 
 }
 

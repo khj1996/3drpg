@@ -115,6 +115,8 @@ public class SaveAndLoad : MonoBehaviour
             StatusManager.Instance.AttackPower = saveData.playerPower;
             StatusManager.Instance.movSpeed = saveData.playerSpeed;
             StatusManager.Instance.Point = saveData.playerPoint;
+            StatusManager.Instance.refresh();
+
             // 인벤토리 로드
             for (int i = 0; i < saveData.invenItemName.Count; i++)
                 theInventory.LoadToInven(saveData.invenArrayNumber[i], saveData.invenItemName[i], saveData.invenItemNumber[i]);
