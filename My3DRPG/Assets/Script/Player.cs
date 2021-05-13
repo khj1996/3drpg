@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private     Rigidbody       _rigidbody;         //리지드바디
     public      Animator        _animator;          //애니메이터
     public      GameObject      cameraBase;         //카메라
-    public      Transform       attackPoint;        //공격점
+    public      GameObject      attackPoint;        //공격점
     public      LayerMask       attackLayer;        //공격레이어
 
     //조이스틱관련
@@ -168,20 +168,10 @@ public class Player : MonoBehaviour
         _animator.SetBool("IsAttack", true);
 
         yield return new WaitForSeconds(0.4f);
-
-        Collider[] colliders = Physics.OverlapSphere(attackPoint.position, 2.3f, attackLayer);
-
-
-        foreach (Collider col in colliders)
-        {
-            if (col.tag == "monster")
-            {
-                col.GetComponent<EnemyBase>().GetDam(AttackPower);
-            }
-        }
+        attackPoint.SetActive(true);
 
         yield return new WaitForSeconds(0.3f);
-
+        attackPoint.SetActive(false);
         IsAttack = false;
         _animator.SetBool("IsAttack", false);
     } 
