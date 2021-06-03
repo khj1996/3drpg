@@ -191,10 +191,13 @@ public class Enemy : EnemyBase
     {
         while (!findTarget && curHP > 0)
         {
-            float randomX = Random.Range(-5, 5) + transform.position.x;
-            float randomZ = Random.Range(-5, 5) + transform.position.z;
+            Vector3 randomPos = Random.insideUnitSphere * 5.0f + transform.position;
 
-            targetPos = new Vector3(randomX, transform.position.y, randomZ);
+            NavMeshHit hit;
+
+            NavMesh.SamplePosition(randomPos, out hit, 5.0f, NavMesh.AllAreas);
+
+            targetPos = hit.position;
             yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
         }
     }
