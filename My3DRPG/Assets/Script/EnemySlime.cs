@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public class Enemy : EnemyBase
+public class EnemySlime : EnemyBase
 {
-    public Enemy()
+    public EnemySlime()
     {
-        HP = 15.0f;
-        power = 3.0f;
-        attackCT = 2.0f;
-        speed = 2.0f;
+        HP = 10.0f;
+        power = 5.0f;
+        attackCT = 4.0f;
+        speed = 1.5f;
     }
 
     //컴포넌트
@@ -86,7 +86,7 @@ public class Enemy : EnemyBase
     }
     public override void OnUpdateTraceState()
     {
-        if (pathFinder.remainingDistance < 2.0f && findTarget == true)
+        if (pathFinder.remainingDistance < 5.0f && findTarget == true)
         {
             ChangeState(eState.Attack);
         }
@@ -98,13 +98,15 @@ public class Enemy : EnemyBase
     }
     public override void OnUpdateAttackState()
     {
-        if (pathFinder.remainingDistance > 2.0 && findTarget == true)
+        if (pathFinder.remainingDistance > 6.0 && findTarget == true)
         {
             pathFinder.isStopped = false;
             ChangeState(eState.Trace);
         }
         else
-            pathFinder.isStopped = true;
+        {
+            targetPos = -_player.transform.position; 
+        }
 
         if (curCT < 0)
         {

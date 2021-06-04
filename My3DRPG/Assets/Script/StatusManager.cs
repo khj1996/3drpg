@@ -53,11 +53,11 @@ public class StatusManager : MonoBehaviour
     public float maxHP { get; set; }        //최대체력
     public float AttackPower { get; set; }  //공격력
     public float movSpeed { get; set; }     //이동속도
-    public float EXPMAX { get; set; }       //현재체력
+    public float EXPMAX { get; set; }       //최대경험치
 
     public float HP;                        //현재체력
 
-    public float EXP = 0;                   //현재체력
+    public float EXP = 0;                   //현재경험치
 
 
     public int Point =5;

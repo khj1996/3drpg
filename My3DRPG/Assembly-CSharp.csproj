@@ -111,6 +111,7 @@
     <Compile Include="Assets\Script\BillBoard.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\EnemyBase.cs" />
+    <Compile Include="Assets\Script\EnemySlime.cs" />
     <Compile Include="Assets\Script\FollowCamera.cs" />
     <Compile Include="Assets\Script\Inven\DragSlot.cs" />
     <Compile Include="Assets\Script\Inven\InputNumber.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Assets\Script\ItemPickUp.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\SaveAndLoad.cs" />
+    <Compile Include="Assets\Script\Spawner.cs" />
     <Compile Include="Assets\Script\StatusManager.cs" />
     <Compile Include="Assets\Script\weapon.cs" />
     <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
