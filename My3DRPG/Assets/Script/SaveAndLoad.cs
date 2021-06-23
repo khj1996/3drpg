@@ -34,8 +34,8 @@ public class SaveAndLoad : MonoBehaviour
     private     string          SAVE_DATA_DIRECTORY;                // 저장할 폴더 경로
     private     string          SAVE_FILENAME = "/SaveFile.txt";    // 파일 이름
 
-    private     Player          thePlayer;      // 플레이어의 위치, 회전값 가져오기 위해 필요
-    private     StatusManager   theS_Manager;       //플레이어의 능력치
+    private     PlayerCtrl      thePlayer;      // 플레이어의 위치, 회전값 가져오기 위해 필요
+    private     PlayerManager   theS_Manager;       //플레이어의 능력치
     private     Inventory       theInventory;   // 인벤토리, 퀵슬롯 상태 가져오기 위해 필요
 
     void Start()
@@ -47,19 +47,19 @@ public class SaveAndLoad : MonoBehaviour
     }
     public void SaveData()
     {
-        thePlayer = FindObjectOfType<Player>();
+        thePlayer = FindObjectOfType<PlayerCtrl>();
         theInventory = FindObjectOfType<Inventory>();
 
         // 플레이어 위치, 능력치, 회전값 저장
         saveData.playerPos = thePlayer.transform.position;
         saveData.playerRot = thePlayer.transform.rotation.eulerAngles;
-        saveData.playerHP = StatusManager.Instance.HP;
-        saveData.playerMaxHP = StatusManager.Instance.maxHP;
-        saveData.playerExp = StatusManager.Instance.EXP;
-        saveData.playerMaxExp = StatusManager.Instance.EXPMAX;
-        saveData.playerPower = StatusManager.Instance.AttackPower;
-        saveData.playerSpeed = StatusManager.Instance.movSpeed;
-        saveData.playerPoint = StatusManager.Instance.Point;
+        saveData.playerHP = GameManager.Instance.playerManager.HP;
+        saveData.playerMaxHP = GameManager.Instance.playerManager.maxHP;
+        saveData.playerExp = GameManager.Instance.playerManager.EXP;
+        saveData.playerMaxExp = GameManager.Instance.playerManager.EXPMAX;
+        saveData.playerPower = GameManager.Instance.playerManager.AttackPower;
+        saveData.playerSpeed = GameManager.Instance.playerManager.movSpeed;
+        saveData.playerPoint = GameManager.Instance.playerManager.Point;
 
         // 인벤토리 정보 저장
         Slot[] slots = theInventory.GetSlots();
@@ -102,20 +102,20 @@ public class SaveAndLoad : MonoBehaviour
             string loadJson = File.ReadAllText(SAVE_DATA_DIRECTORY + SAVE_FILENAME);
             saveData = JsonUtility.FromJson<SaveData>(loadJson);
 
-            thePlayer = FindObjectOfType<Player>();
+            thePlayer = FindObjectOfType<PlayerCtrl>();
             theInventory = FindObjectOfType<Inventory>();
 
             // 플레이어 위치, 회전 로드
             thePlayer.transform.position = saveData.playerPos;
             thePlayer.transform.eulerAngles = saveData.playerRot;
-            StatusManager.Instance.HP = saveData.playerHP;
-            StatusManager.Instance.maxHP = saveData.playerMaxHP;
-            StatusManager.Instance.EXP = saveData.playerExp;
-            StatusManager.Instance.EXPMAX = saveData.playerMaxExp;
-            StatusManager.Instance.AttackPower = saveData.playerPower;
-            StatusManager.Instance.movSpeed = saveData.playerSpeed;
-            StatusManager.Instance.Point = saveData.playerPoint;
-            StatusManager.Instance.refresh();
+            GameManager.Instance.playerManager.HP = saveData.playerHP;
+            GameManager.Instance.playerManager.maxHP = saveData.playerMaxHP;
+            GameManager.Instance.playerManager.EXP = saveData.playerExp;
+            GameManager.Instance.playerManager.EXPMAX = saveData.playerMaxExp;
+            GameManager.Instance.playerManager.AttackPower = saveData.playerPower;
+            GameManager.Instance.playerManager.movSpeed = saveData.playerSpeed;
+            GameManager.Instance.playerManager.Point = saveData.playerPoint;
+            GameManager.Instance.playerManager.refresh();
 
             // 인벤토리 로드
             for (int i = 0; i < saveData.invenItemName.Count; i++)

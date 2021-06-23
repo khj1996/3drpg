@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
-public class Item : ScriptableObject  // 게임 오브젝트에 붙일 필요 X
+public class Item : ScriptableObject  
 {
     public enum ItemType  // 아이템 유형
     {

@@ -31,10 +31,10 @@ public class ItemManager : MonoBehaviour
                         switch (itemEffects[i].part[j])
                         {
                             case MAXHP:
-                                StatusManager.Instance.ChangeMAXHP(itemEffects[i].num[j]);
+                                GameManager.Instance.playerManager.ChangeMAXHP(itemEffects[i].num[j]);
                                 break;
                             case HP:
-                                StatusManager.Instance.ChangeHP(itemEffects[i].num[j]);
+                                GameManager.Instance.playerManager.ChangeHP(itemEffects[i].num[j]);
                                 break;                            
                             default:
                                 Debug.Log("잘못된 Status MAXHP, HP만 가능합니다.");

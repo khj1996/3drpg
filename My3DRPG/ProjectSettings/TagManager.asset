@@ -9,6 +9,10 @@ TagManager:
   - monster
   - Ground
   - Item
+  - npc
+  - UICanvas
+  - UIManager
+  - npctest
   layers:
   - Default
   - TransparentFX

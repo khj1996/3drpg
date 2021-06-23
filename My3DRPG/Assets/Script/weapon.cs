@@ -8,7 +8,7 @@ public class weapon : MonoBehaviour
     {
         if (other.gameObject.tag == "monster")
         {
-            other.GetComponent<EnemyBase>().GetDam(StatusManager.Instance.AttackPower);
+            other.GetComponent<EnemyBase>().GetDam(GameManager.Instance.playerManager.AttackPower);
         }
     }
 }

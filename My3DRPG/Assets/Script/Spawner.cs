@@ -20,9 +20,9 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             GameObject go = Instantiate(monster, transform.position, Quaternion.identity, transform);
-            randomPos = Random.insideUnitSphere * 10.0f + transform.position;
-            NavMesh.SamplePosition(randomPos, out hit, 5.0f, NavMesh.AllAreas);
-            go.transform.position = hit.position;
+            //randomPos = Random.insideUnitSphere * 10.0f + transform.position;
+            //NavMesh.SamplePosition(randomPos, out hit, 5.0f, NavMesh.AllAreas);
+            //go.transform.position = hit.position;
             spawnMonster[i] = go;
         }
     }
@@ -39,11 +39,11 @@ public class Spawner : MonoBehaviour
         {
             if (monster.activeSelf == false)
             {
-                randomPos = Random.insideUnitSphere * 10.0f + transform.position;
+                //randomPos = Random.insideUnitSphere * 10.0f + transform.position;
 
-                NavMesh.SamplePosition(randomPos, out hit, 5.0f, NavMesh.AllAreas);
-                spawnPos = hit.position;
-                monster.transform.position = spawnPos;
+                //NavMesh.SamplePosition(randomPos, out hit, 5.0f, NavMesh.AllAreas);
+                //spawnPos = hit.position;
+                //monster.transform.position = spawnPos;
                 monster.GetComponent<Enemy>().ResetMonster();
                 break;
             }

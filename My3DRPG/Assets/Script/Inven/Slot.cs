@@ -138,7 +138,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             _itemManager.HideToolTip();
             DragSlot.instance.SetColor(0);
             DragSlot.instance.dragSlot = null;
-            Debug.Log(baseRect.rect);
         }
     }
     public void OnDrop(PointerEventData eventData)
