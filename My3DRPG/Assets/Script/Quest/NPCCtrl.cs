@@ -50,7 +50,7 @@ public class NPCCtrl : MonoBehaviour
 
     Quest refQuestInPlayer;
 
-    //public void SetQuest_WhenChangeScene(Quest refQuestInPlayer)
+    //public void SetQuest_WhenLoad(Quest refQuestInPlayer)
     //{
     //    if (refQuestInPlayer.enabled == false) // 이미 해결한 퀘스트
     //    {

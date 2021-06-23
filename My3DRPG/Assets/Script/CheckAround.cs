@@ -17,7 +17,6 @@ public class CheckAround : MonoBehaviour
     private     Inventory   inven;
     [SerializeField]
     private     LayerMask   layerMask;  // 특정 레이어를 가진 오브젝트에 대해서만 습득할 수 있어야 한다.
-    [SerializeField]
     public TextMeshProUGUI actionText;  // 행동을 보여 줄 텍스트
 
 
