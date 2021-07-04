@@ -29,15 +29,10 @@ public class QuestListUiController : MonoBehaviour
 
     public void RemoveQuestUI(Quest quest)
     {
-        // Debug.Log("현재 UI 개수 : " + questUIList.Count + ", 지운다?");
         for (int i = 0; i < questUIList.Count; i++)
         {
-            // Debug.Log("퀘스트 번호 : " + quest.number + ", 현재 번호 : " + i);
-
             if (questUIList[i].name.Equals(quest.number.ToString()))
             {
-                // Debug.Log("지운다");
-
                 Destroy(questUIList[i]); // 오브젝트 삭제 하고,
                 questUIList.RemoveAt(i); // 리스트에서도 삭제
             }
@@ -64,9 +59,6 @@ public class QuestListUiController : MonoBehaviour
         return ui;
     }
 
-    /// <summary>
-    /// // 퀘스트 내용을 UI에 세팅
-    /// </summary>
     private GameObject SetQuestUI(GameObject ui, Quest quest)
     {
         // 순서 지키자

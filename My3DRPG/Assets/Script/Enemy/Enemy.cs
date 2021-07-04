@@ -94,6 +94,7 @@ public class Enemy : EnemyBase
         else if (pathFinder.remainingDistance > 15f && findTarget == true)
         {
             findTarget = false;
+            hpBar.transform.parent.gameObject.SetActive(false);
             ChangeState(eState.Idle);
         }
     }
@@ -236,6 +237,7 @@ public class Enemy : EnemyBase
         gameObject.SetActive(true);
         curHP = HP;
         pathFinder.speed = speed;
+        hpBar.transform.parent.gameObject.SetActive(false);
         hpBar.fillAmount = curHP / HP;
         targetPos = transform.position;
         pathFinder.isStopped = false;
@@ -245,6 +247,8 @@ public class Enemy : EnemyBase
     {
         PlayerManager playerManager = GameManager.Instance.playerManager;
 
+        hpBar.transform.parent.gameObject.SetActive(true);
+       
         curHP -= amount;
         hpBar.fillAmount = curHP / HP;
 

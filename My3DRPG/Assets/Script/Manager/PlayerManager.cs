@@ -194,7 +194,7 @@ public class PlayerManager : MonoBehaviour
     //        {
     //            if (questList[i].npcName == NPCArr[j].GetComponent<NPCCtrl>().npcName)
     //            {
-    //                NPCArr[j].GetComponent<NPCCtrl>().SetQuest_WhenChangeScene(questList[i]);
+    //                NPCArr[j].GetComponent<NPCCtrl>().SetQuest_WhenLoad(questList[i]);
     //            }
     //        }
     //    }
