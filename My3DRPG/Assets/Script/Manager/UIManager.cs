@@ -24,7 +24,6 @@ public class UIManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -50,14 +49,7 @@ public class UIManager : MonoBehaviour
     private GameObject statusBase;
     public GameObject CanvasScreen;
     public QuestListUiController questListUiController;
-    void Start()
-    {
-    }
 
-    void Update()
-    {
-        
-    }
     public void SetStatusUI(float amount,string type)
     {
         switch (type)

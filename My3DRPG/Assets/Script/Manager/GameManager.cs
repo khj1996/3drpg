@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
